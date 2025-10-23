@@ -315,7 +315,7 @@ section {
 }
 
 .product-card {
-    background: white;
+    background: #f7ec14b5;
     border-radius: 20px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
