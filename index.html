@@ -1,3 +1,4 @@
+<!-- Optimized index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,82 +15,84 @@
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav id="navbar">
+    <nav id="navbar" role="navigation">
         <div class="logo-container">
             <img src="https://uploads.onecompiler.io/43924vdyc/442298qsn/logo.png" alt="Excel United International Co., Ltd." class="logo-image" onclick="scrollToSection('home')" role="button" aria-label="Excel United International Co., Ltd.">
             <span class="logo-text">Excel United International Co., Ltd.</span>
         </div>
-        <div class="nav-links">
-            <button onclick="scrollToSection('home')" aria-label="Home">Home</button>
-            <button onclick="scrollToSection('products')" aria-label="Our Products">Our Products</button>
-            <button onclick="scrollToSection('services')" aria-label="What We Do">What We Do</button>
-            <button onclick="scrollToSection('about')" aria-label="About Us">About Us</button>
-            <button onclick="scrollToSection('contact')" aria-label="Contact Us">Contact Us</button>
+        <div class="nav-links" role="menubar">
+            <button onclick="scrollToSection('home')" role="menuitem" aria-label="Home">Home</button>
+            <button onclick="scrollToSection('products')" role="menuitem" aria-label="Our Products">Our Products</button>
+            <button onclick="scrollToSection('services')" role="menuitem" aria-label="What We Do">What We Do</button>
+            <button onclick="scrollToSection('about')" role="menuitem" aria-label="About Us">About Us</button>
+            <button onclick="scrollToSection('contact')" role="menuitem" aria-label="Contact Us">Contact Us</button>
         </div>
-        <button class="hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation">
+        <button class="hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation" aria-expanded="false">
             <i class="fas fa-bars"></i>
         </button>
     </nav>
 
-    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true" role="navigation">
         <div class="nav-header">
             <img src="https://uploads.onecompiler.io/43924vdyc/442298qsn/logo.png" alt="EUI Trade Logo" class="logo-image-mobile" onclick="scrollToSection('home')" role="button" aria-label="EUI Trade Logo">
             <button class="close-btn" onclick="toggleMobileNav()" aria-label="Close menu">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <button onclick="scrollToSection('home'); toggleMobileNav()" aria-label="Home">Home</button>
-        <button onclick="scrollToSection('products'); toggleMobileNav()" aria-label="Our Products">Our Products</button>
-        <button onclick="scrollToSection('services'); toggleMobileNav()" aria-label="What We Do">What We Do</button>
-        <button onclick="scrollToSection('about'); toggleMobileNav()" aria-label="About Us">About Us</button>
-        <button onclick="scrollToSection('contact'); toggleMobileNav()" aria-label="Contact Us">Contact Us</button>
+        <button onclick="scrollToSection('home'); toggleMobileNav()" role="menuitem" aria-label="Home">Home</button>
+        <button onclick="scrollToSection('products'); toggleMobileNav()" role="menuitem" aria-label="Our Products">Our Products</button>
+        <button onclick="scrollToSection('services'); toggleMobileNav()" role="menuitem" aria-label="What We Do">What We Do</button>
+        <button onclick="scrollToSection('about'); toggleMobileNav()" role="menuitem" aria-label="About Us">About Us</button>
+        <button onclick="scrollToSection('contact'); toggleMobileNav()" role="menuitem" aria-label="Contact Us">Contact Us</button>
     </div>
 
     <!-- Home Section -->
-    <section id="home">
+    <section id="home" aria-labelledby="home-heading">
+        <h2 id="home-heading" hidden>Home</h2>
         <div class="slideshow" aria-roledescription="carousel">
+            <button class="slide-btn prev" onclick="changeSlide(-1)" aria-label="Previous slide">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slide-btn next" onclick="changeSlide(1)" aria-label="Next slide">
+                <i class="fas fa-chevron-right"></i>
+            </button>
             <div class="slide active" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/1.jpg');">
-                <div class="slide-content">
+                <div class="slide-caption">
                     <h3>MIGHTY Brand Sardine in Tomato Sauce</h3>
                     <p>A bright red advertisement for MIGHTY Brand Sardines in Tomato Sauce emphasizing tasty, nutritious sardines in rich tomato sauce.</p>
                 </div>
             </div>
             <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/3.jpg');">
-                <div class="slide-content">
+                <div class="slide-caption">
                     <h3>Royal Nest – 100% Natural Bird’s Nest</h3>
                     <p>Premium Thai bird’s nest drink made from 100% natural ingredients for health and beauty.</p>
                 </div>
             </div>
             <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/13.jpg');">
-                <div class="slide-content">
+                <div class="slide-caption">
                     <h3>SONG HENG Sour Pickled Green Mustard</h3>
                     <p>Authentic Thai-style sour pickled green mustard available in spicy and non-spicy varieties, imported and distributed by EUI</p>
                 </div>
             </div>
             <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/5.jpg');">
-                <div class="slide-content">
+                <div class="slide-caption">
                     <h3>Zale Cosmetics – Whitening & Sun Block</h3>
                     <p>Whitening and sunblock cream for smooth, bright, and protected skin.</p>
                 </div>
             </div>
             <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/7.jpg');">
-                <div class="slide-content">
+                <div class="slide-caption">
                     <h3>ZALE Coconut Hair Oil</h3>
                     <p>Natural coconut hair oil that nourishes and strengthens hair, keeping it soft and smooth</p>
                 </div>
             </div>
-            <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/9.jpg');">
-                <div class="slide-content">
-                    <h3>Placenta Dr. Darin – Whitening & Anti-Aging Cream</h3>
-                    <p>Placenta-based cream that reduces dark spots and wrinkles while keeping skin hydrated.</p>
-                </div>
-            </div>
+            <!-- Removed Placenta Dr. Darin slide -->
         </div>
     </section>
 
     <!-- Our Products Section -->
-    <section id="products">
-        <h2 class="section-title">Our Products</h2>
+    <section id="products" aria-labelledby="products-heading">
+        <h2 id="products-heading" class="section-title">Our Products</h2>
         <div class="products-grid">
             <div class="product-card">
                 <img src="https://uploads.onecompiler.io/43924vdyc/442fmmhju/1.jpg" alt="Mighty Sardine" class="product-img">
@@ -144,8 +147,8 @@
     </section>
 
     <!-- What We Do Section -->
-    <section id="services">
-        <h2 class="section-title">What We Do</h2>
+    <section id="services" aria-labelledby="services-heading">
+        <h2 id="services-heading" class="section-title">What We Do</h2>
         <div class="services-grid">
             <div class="service-card">
                 <i class="fas fa-globe-americas" aria-hidden="true"></i>
@@ -166,14 +169,14 @@
     </section>
 
     <!-- About Us Section -->
-    <section id="about">
-        <h2 class="section-title">About Us</h2>
+    <section id="about" aria-labelledby="about-heading">
+        <h2 id="about-heading" class="section-title">About Us</h2>
         <div class="about-content">
             <div class="about-text">
                 <h2>Our Story</h2>
                 <p>Excel United International Co., Ltd. (EUI) is a foreign export-import company headquartered in Bangkok, Thailand, with a branch office in Yangon, Myanmar.</p>
                 <p>The company specializes in import, export, and distribution of food, beverage, and cosmetic products.</p>
-                <p>EUI serves as a key player in Myanmar’s consumer goods market, providing quality products to wholesalers, retailers, and general trade channels nationwide.</p>
+                <p>EUI serves as a key player in Myanmar's consumer goods market, providing quality products to wholesalers, retailers, and general trade channels nationwide.</p>
 
                 <div class="stats">
                     <div class="stat-item">
@@ -197,8 +200,8 @@
     </section>
 
     <!-- Contact Us Section -->
-    <section id="contact">
-        <h2 class="section-title">Contact Us</h2>
+    <section id="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading" class="section-title">Contact Us</h2>
         <div class="contact-container">
             <div class="contact-info">
                 <h3>Get In Touch</h3>
@@ -238,4 +241,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
