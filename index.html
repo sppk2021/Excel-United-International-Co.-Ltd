@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>EUI Trade - International Trade Solutions</title>
+
+    <!-- External fonts & icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Local stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav id="navbar">
+        <div class="logo-container">
+            <img src="https://uploads.onecompiler.io/43924vdyc/442298qsn/logo.png" alt="Excel United International Co., Ltd." class="logo-image" onclick="scrollToSection('home')" role="button" aria-label="Excel United International Co., Ltd.">
+            <span class="logo-text">Excel United International Co., Ltd.</span>
+        </div>
+        <div class="nav-links">
+            <button onclick="scrollToSection('home')" aria-label="Home">Home</button>
+            <button onclick="scrollToSection('products')" aria-label="Our Products">Our Products</button>
+            <button onclick="scrollToSection('services')" aria-label="What We Do">What We Do</button>
+            <button onclick="scrollToSection('about')" aria-label="About Us">About Us</button>
+            <button onclick="scrollToSection('contact')" aria-label="Contact Us">Contact Us</button>
+        </div>
+        <button class="hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+        <div class="nav-header">
+            <img src="https://uploads.onecompiler.io/43924vdyc/442298qsn/logo.png" alt="EUI Trade Logo" class="logo-image-mobile" onclick="scrollToSection('home')" role="button" aria-label="EUI Trade Logo">
+            <button class="close-btn" onclick="toggleMobileNav()" aria-label="Close menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <button onclick="scrollToSection('home'); toggleMobileNav()" aria-label="Home">Home</button>
+        <button onclick="scrollToSection('products'); toggleMobileNav()" aria-label="Our Products">Our Products</button>
+        <button onclick="scrollToSection('services'); toggleMobileNav()" aria-label="What We Do">What We Do</button>
+        <button onclick="scrollToSection('about'); toggleMobileNav()" aria-label="About Us">About Us</button>
+        <button onclick="scrollToSection('contact'); toggleMobileNav()" aria-label="Contact Us">Contact Us</button>
+    </div>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="slideshow" aria-roledescription="carousel">
+            <div class="slide active" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/1.jpg');">
+                <div class="slide-content">
+                    <h3>MIGHTY Brand Sardine in Tomato Sauce</h3>
+                    <p>A bright red advertisement for MIGHTY Brand Sardines in Tomato Sauce emphasizing tasty, nutritious sardines in rich tomato sauce.</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/3.jpg');">
+                <div class="slide-content">
+                    <h3>Royal Nest – 100% Natural Bird’s Nest</h3>
+                    <p>Premium Thai bird’s nest drink made from 100% natural ingredients for health and beauty.</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/13.jpg');">
+                <div class="slide-content">
+                    <h3>SONG HENG Sour Pickled Green Mustard</h3>
+                    <p>Authentic Thai-style sour pickled green mustard available in spicy and non-spicy varieties, imported and distributed by EUI</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/5.jpg');">
+                <div class="slide-content">
+                    <h3>Zale Cosmetics – Whitening & Sun Block</h3>
+                    <p>Whitening and sunblock cream for smooth, bright, and protected skin.</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/7.jpg');">
+                <div class="slide-content">
+                    <h3>ZALE Coconut Hair Oil</h3>
+                    <p>Natural coconut hair oil that nourishes and strengthens hair, keeping it soft and smooth</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/9.jpg');">
+                <div class="slide-content">
+                    <h3>Placenta Dr. Darin – Whitening & Anti-Aging Cream</h3>
+                    <p>Placenta-based cream that reduces dark spots and wrinkles while keeping skin hydrated.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Products Section -->
+    <section id="products">
+        <h2 class="section-title">Our Products</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="https://uploads.onecompiler.io/43924vdyc/442fmmhju/1.jpg" alt="Mighty Sardine" class="product-img">
+                <div class="product-info">
+                    <h3>MIGHTY Brand Sardine in Tomato Sauce</h3>
+                    <p>A bright red advertisement for MIGHTY Brand Sardines in Tomato Sauce emphasizing tasty, nutritious sardines in rich tomato sauce.</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://uploads.onecompiler.io/43924vdyc/442fmmhju/3.jpg" alt="Royal Nest" class="product-img">
+                <div class="product-info">
+                    <h3>Royal Nest – 100% Natural Bird’s Nest</h3>
+                    <p>Premium Thai bird’s nest drink made from 100% natural ingredients for health and beauty.</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://uploads.onecompiler.io/43924vdyc/442fmmhju/13.jpg" alt="Song Heng Pickles" class="product-img">
+                <div class="product-info">
+                    <h3>SONG HENG Sour Pickled Green Mustard</h3>
+                    <p>Authentic Thai-style sour pickled green mustard available in spicy and non-spicy varieties.</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://uploads.onecompiler.io/43924vdyc/442fmmhju/5.jpg" alt="Zale Cosmetics" class="product-img">
+                <div class="product-info">
+                    <h3>Zale Cosmetics – Whitening & Sun Block</h3>
+                    <p>Whitening and sunblock cream for smooth, bright, and protected skin.</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://uploads.onecompiler.io/43924vdyc/442fmmhju/7.jpg" alt="ZALE Coconut Hair Oil" class="product-img">
+                <div class="product-info">
+                    <h3>ZALE Coconut Hair Oil</h3>
+                    <p>Natural coconut hair oil that nourishes and strengthens hair, keeping it soft and smooth.</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://uploads.onecompiler.io/43924vdyc/442fmmhju/9.jpg" alt="Placenta Dr. Darin" class="product-img">
+                <div class="product-info">
+                    <h3>Placenta Dr. Darin – Whitening & Anti-Aging Cream</h3>
+                    <p>Placenta-based cream that reduces dark spots and wrinkles while keeping skin hydrated.</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://uploads.onecompiler.io/43924vdyc/442fmmhju/11.JPG" alt="DARIN Goat Milk Facial Cleansing Foam" class="product-img">
+                <div class="product-info">
+                    <h3>DARIN Goat Milk Facial Cleansing Foam</h3>
+                    <p>Facial cleanser made with goat milk extract that deeply cleanses, moisturizes, and refreshes the skin.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Do Section -->
+    <section id="services">
+        <h2 class="section-title">What We Do</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-globe-americas" aria-hidden="true"></i>
+                <h3>Distribution</h3>
+                <p>Efficient distribution networks to wholesalers, retailers, and supermarkets across Myanmar's consumer market.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-truck" aria-hidden="true"></i>
+                <h3>Import & Export</h3>
+                <p>Food & beverage products from global suppliers to local markets with seamless logistics and quality assurance.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-file-contract" aria-hidden="true"></i>
+                <h3>Regulatory Compliance</h3>
+                <p>Expert handling of licenses, customs procedures, and government approvals for smooth business operations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Our Story</h2>
+                <p>Excel United International Co., Ltd. (EUI) is a foreign export-import company headquartered in Bangkok, Thailand, with a branch office in Yangon, Myanmar.</p>
+                <p>The company specializes in import, export, and distribution of food, beverage, and cosmetic products.</p>
+                <p>EUI serves as a key player in Myanmar’s consumer goods market, providing quality products to wholesalers, retailers, and general trade channels nationwide.</p>
+
+                <div class="stats">
+                    <div class="stat-item">
+                        <h3>18+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>500+</h3>
+                        <p>Business Partners</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>25+</h3>
+                        <p>Countries Served</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image" aria-hidden="false">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Our Team at EUI Trade">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <div>
+                            <h4>Our Location</h4>
+                            <p>Yan Naing Swe (2) Street, No. 48 Tharkayta Industrial Zone, Tharkayta Township, Yangon Region, Myanmar</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone" aria-hidden="true"></i>
+                        <div>
+                            <h4>Phone Number</h4>
+                            <p>+ (959) 951-751-759</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <div>
+                            <h4>Email Address</h4>
+                            <p>info@euimm.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Excel United International Co., Ltd. All rights reserved. | Designed with <i class="fas fa-heart" aria-hidden="true"></i> CNMax Digital </p>
+    </footer>
+
+    <!-- Local script -->
+    <script src="script.js"></script>
+</body>
+</html>
