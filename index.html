@@ -1,4 +1,3 @@
-<!-- Optimized index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +9,960 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Local stylesheet -->
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: white;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        #navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 5%;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 164, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-image {
+            height: 50px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-image:hover {
+            transform: scale(1.1);
+        }
+
+        .logo-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: #f21d1d;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links button {
+            background: none;
+            border: none;
+            color: #f21d1d;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .nav-links button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-links button:hover::before {
+            left: 100%;
+        }
+
+        .nav-links button:hover {
+            background: rgba(240, 240, 240, 0.8);
+            color: #edc524;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .nav-links button:active {
+            transform: translateY(0);
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: #f21d1d;
+            padding: 10px;
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background: rgba(255, 255, 164, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            z-index: 1001;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .logo-image-mobile {
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: #333;
+            padding: 10px;
+        }
+
+        .mobile-nav button {
+            background: none;
+            border: none;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            padding: 15px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 80%;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .mobile-nav button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .mobile-nav button:hover::before {
+            left: 100%;
+        }
+
+        .mobile-nav button:hover {
+            background: rgba(240, 240, 240, 0.8);
+            color: #ff6b6b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .mobile-nav button:active {
+            transform: translateY(0);
+        }
+
+        /* Section Styling */
+        section {
+            min-height: 100vh;
+            padding: 100px 5% 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #ff6b6b;
+            border-radius: 2px;
+        }
+
+        /* Home Section */
+        .slideshow {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 5%;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 1;
+            padding-bottom: 50px;
+            color: white;
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .slide-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            z-index: 0;
+        }
+
+        .slide-content h3 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .slide-content p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+
+        /* Slide buttons */
+        .slide-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #333;
+            z-index: 2;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #333;
+            z-index: 2;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+
+        .slide-btn:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        /* Slide caption styles */
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            z-index: 2;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            opacity: 0;
+        }
+
+        .slide.active .slide-caption {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .slide-caption h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .slide-caption p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+
+        /* Ensure slide content doesn't overlap with caption */
+        .slide-content {
+            position: relative;
+            z-index: 1;
+            padding-bottom: 100px; /* Space for caption */
+        }
+
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .product-card {
+            background: #ffffa4;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+            border: 1px solid #eee;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .product-info h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .product-info p {
+            color: #666;
+            margin-bottom: 0;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Product Detail Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: #ffffa4;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 8px 35px rgba(0,0,0,0.2);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #333;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .close-modal:hover {
+            background: #f0f0f0;
+            transform: rotate(90deg);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .product-detail-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .product-detail-title {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .product-detail-description {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        .product-detail-section {
+            margin-bottom: 25px;
+        }
+
+        .product-detail-section h3 {
+            color: #f21d1d;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .product-detail-section ul {
+            padding-left: 20px;
+        }
+
+        .product-detail-section li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        /* What We Do Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card i {
+            font-size: 3.5rem;
+            color: #ff6b6b;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* About Us Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h2 {
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .about-text p {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .stat-item h3 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #ff6b6b;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .stat-item p {
+            color: #333;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+            object-fit: cover;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 50px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+            border: 1px solid #eee;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .contact-info h3 {
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .contact-item i {
+            font-size: 1.8rem;
+            color: #ff6b6b;
+            margin-right: 20px;
+            width: 40px;
+            flex-shrink: 0;
+        }
+
+        .contact-item div {
+            flex-grow: 1;
+        }
+
+        .contact-item h4 {
+            color: #333;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .contact-item p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #333;
+            background: #f8f9fa;
+            border-top: 1px solid #eee;
+            font-size: 0.95rem;
+        }
+
+        footer i {
+            color: #ff6b6b;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            section {
+                padding: 80px 5% 40px;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+                margin-bottom: 2.5rem;
+            }
+            
+            .about-content,
+            .contact-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .about-text,
+            .about-image,
+            .contact-info {
+                width: 100%;
+                min-width: unset;
+            }
+            
+            .stats {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+                margin-bottom: 2rem;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            #navbar {
+                padding: 15px 5%;
+            }
+            
+            .slide-content h3 {
+                font-size: 2.5rem;
+            }
+            
+            .slide-content p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            section {
+                padding: 60px 5% 30px;
+            }
+            
+            .slideshow {
+                height: 60vh;
+                border-radius: 15px;
+            }
+            
+            .slide-content {
+                padding-bottom: 30px;
+            }
+            
+            .slide-content h3 {
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
+            
+            .slide-content p {
+                font-size: 0.9rem;
+            }
+            
+            .products-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .product-card,
+            .service-card,
+            .contact-info {
+                padding: 30px 20px;
+            }
+            
+            .product-img {
+                height: 180px;
+            }
+            
+            .service-card i {
+                font-size: 3rem;
+                margin-bottom: 20px;
+            }
+            
+            .about-content,
+            .contact-container {
+                gap: 30px;
+            }
+            
+            .stats {
+                gap: 15px;
+                margin-top: 30px;
+            }
+            
+            .stat-item h3 {
+                font-size: 2rem;
+            }
+            
+            .stat-item p {
+                font-size: 1rem;
+            }
+            
+            .contact-item i {
+                font-size: 1.5rem;
+                margin-right: 15px;
+                width: 30px;
+            }
+            
+            footer {
+                padding: 30px 15px;
+            }
+            
+            .mobile-nav {
+                width: 90%;
+            }
+            
+            .modal-content {
+                padding: 20px;
+            }
+            
+            .product-detail-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Mobile Nav Header */
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -65,7 +1016,7 @@
             <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/3.jpg');">
                 <div class="slide-caption">
                     <h3>Royal Nest – 100% Natural Bird’s Nest</h3>
-                    <p>Premium Thai bird’s nest drink made from 100% natural ingredients for health and beauty.</p>
+                    <p>Premium Thai bird's nest drink made from 100% natural ingredients for health and beauty.</p>
                 </div>
             </div>
             <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/13.jpg');">
@@ -94,49 +1045,49 @@
     <section id="products" aria-labelledby="products-heading">
         <h2 id="products-heading" class="section-title">Our Products</h2>
         <div class="products-grid">
-            <div class="product-card">
+            <div class="product-card" onclick="showProductDetail('mighty-sardine', 'MIGHTY Brand Sardine in Tomato Sauce', 'https://uploads.onecompiler.io/43924vdyc/442fmmhju/1.jpg', 'A bright red advertisement for MIGHTY Brand Sardines in Tomato Sauce emphasizing tasty, nutritious sardines in rich tomato sauce.', 'Available in 120g cans. Perfect for meals and snacks.', '120g cans')">
                 <img src="https://uploads.onecompiler.io/43924vdyc/442fmmhju/1.jpg" alt="Mighty Sardine" class="product-img">
                 <div class="product-info">
                     <h3>MIGHTY Brand Sardine in Tomato Sauce</h3>
                     <p>A bright red advertisement for MIGHTY Brand Sardines in Tomato Sauce emphasizing tasty, nutritious sardines in rich tomato sauce.</p>
                 </div>
             </div>
-            <div class="product-card">
+            <div class="product-card" onclick="showProductDetail('royal-nest', 'Royal Nest – 100% Natural Bird’s Nest', 'https://uploads.onecompiler.io/43924vdyc/442fmmhju/3.jpg', 'Premium Thai bird's nest drink made from 100% natural ingredients for health and beauty.', 'Available in 250ml bottles. Perfect for health drinks.', '250ml bottles')">
                 <img src="https://uploads.onecompiler.io/43924vdyc/442fmmhju/3.jpg" alt="Royal Nest" class="product-img">
                 <div class="product-info">
                     <h3>Royal Nest – 100% Natural Bird’s Nest</h3>
-                    <p>Premium Thai bird’s nest drink made from 100% natural ingredients for health and beauty.</p>
+                    <p>Premium Thai bird's nest drink made from 100% natural ingredients for health and beauty.</p>
                 </div>
             </div>
-            <div class="product-card">
+            <div class="product-card" onclick="showProductDetail('song-heng', 'SONG HENG Sour Pickled Green Mustard', 'https://uploads.onecompiler.io/43924vdyc/442fmmhju/13.jpg', 'Authentic Thai-style sour pickled green mustard available in spicy and non-spicy varieties.', 'Available in 250g jars. Great for seasoning.', '250g jars')">
                 <img src="https://uploads.onecompiler.io/43924vdyc/442fmmhju/13.jpg" alt="Song Heng Pickles" class="product-img">
                 <div class="product-info">
                     <h3>SONG HENG Sour Pickled Green Mustard</h3>
                     <p>Authentic Thai-style sour pickled green mustard available in spicy and non-spicy varieties.</p>
                 </div>
             </div>
-            <div class="product-card">
+            <div class="product-card" onclick="showProductDetail('zale-cosmetics', 'Zale Cosmetics – Whitening & Sun Block', 'https://uploads.onecompiler.io/43924vdyc/442fmmhju/5.jpg', 'Whitening and sunblock cream for smooth, bright, and protected skin.', 'Available in 50g tubes. Perfect for daily skincare.', '50g tubes')">
                 <img src="https://uploads.onecompiler.io/43924vdyc/442fmmhju/5.jpg" alt="Zale Cosmetics" class="product-img">
                 <div class="product-info">
                     <h3>Zale Cosmetics – Whitening & Sun Block</h3>
                     <p>Whitening and sunblock cream for smooth, bright, and protected skin.</p>
                 </div>
             </div>
-            <div class="product-card">
+            <div class="product-card" onclick="showProductDetail('zale-hair-oil', 'ZALE Coconut Hair Oil', 'https://uploads.onecompiler.io/43924vdyc/442fmmhju/7.jpg', 'Natural coconut hair oil that nourishes and strengthens hair, keeping it soft and smooth.', 'Available in 100ml bottles. Ideal for hair care.', '100ml bottles')">
                 <img src="https://uploads.onecompiler.io/43924vdyc/442fmmhju/7.jpg" alt="ZALE Coconut Hair Oil" class="product-img">
                 <div class="product-info">
                     <h3>ZALE Coconut Hair Oil</h3>
                     <p>Natural coconut hair oil that nourishes and strengthens hair, keeping it soft and smooth.</p>
                 </div>
             </div>
-            <div class="product-card">
+            <div class="product-card" onclick="showProductDetail('placenta-darin', 'Placenta Dr. Darin – Whitening & Anti-Aging Cream', 'https://uploads.onecompiler.io/43924vdyc/442fmmhju/9.jpg', 'Placenta-based cream that reduces dark spots and wrinkles while keeping skin hydrated.', 'Available in 50g tubes. Perfect for anti-aging.', '50g tubes')">
                 <img src="https://uploads.onecompiler.io/43924vdyc/442fmmhju/9.jpg" alt="Placenta Dr. Darin" class="product-img">
                 <div class="product-info">
                     <h3>Placenta Dr. Darin – Whitening & Anti-Aging Cream</h3>
                     <p>Placenta-based cream that reduces dark spots and wrinkles while keeping skin hydrated.</p>
                 </div>
             </div>
-            <div class="product-card">
+            <div class="product-card" onclick="showProductDetail('darin-goat-milk', 'DARIN Goat Milk Facial Cleansing Foam', 'https://uploads.onecompiler.io/43924vdyc/442fmmhju/11.JPG', 'Facial cleanser made with goat milk extract that deeply cleanses, moisturizes, and refreshes the skin.', 'Available in 150ml bottles. Great for facial care.', '150ml bottles')">
                 <img src="https://uploads.onecompiler.io/43924vdyc/442fmmhju/11.JPG" alt="DARIN Goat Milk Facial Cleansing Foam" class="product-img">
                 <div class="product-info">
                     <h3>DARIN Goat Milk Facial Cleansing Foam</h3>
@@ -232,12 +1183,239 @@
         </div>
     </section>
 
+    <!-- Product Detail Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+            <img id="modalProductImage" class="product-detail-image" src="" alt="Product Image">
+            <h2 id="modalProductTitle" class="product-detail-title"></h2>
+            <p id="modalProductDescription" class="product-detail-description"></p>
+            
+            <div class="product-detail-section">
+                <h3>Available Places</h3>
+                <p id="modalAvailablePlaces"></p>
+            </div>
+            
+            <div class="product-detail-section">
+                <h3>How to Use or Eat</h3>
+                <ul id="modalHowToUse"></ul>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 Excel United International Co., Ltd. All rights reserved. | Designed with <i class="fas fa-heart" aria-hidden="true"></i> CNMax Digital </p>
     </footer>
 
-    <!-- Local script -->
-    <script src="script.js"></script>
+    <script>
+        // Navigation scroll functionality
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                const mobileNav = document.getElementById('mobileNav');
+                if (mobileNav?.classList.contains('active')) {
+                    toggleMobileNav();
+                }
+            }
+        }
+
+        // Mobile navigation toggle
+        function toggleMobileNav() {
+            const mobileNav = document.getElementById('mobileNav');
+            if (!mobileNav) return;
+            
+            mobileNav.classList.toggle('active');
+            mobileNav.setAttribute('aria-hidden', String(!mobileNav.classList.contains('active')));
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('#navbar');
+            if (!navbar) return;
+            
+            navbar.style.padding = window.scrollY > 50 ? '10px 5%' : '15px 5%';
+            navbar.style.boxShadow = window.scrollY > 50 ? '0 4px 15px rgba(0,0,0,0.1)' : '0 2px 10px rgba(0,0,0,0.1)';
+        });
+
+        // Slideshow functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        let slideInterval;
+
+        function showSlide(index) {
+            if (totalSlides === 0) return;
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+            
+            // Reset auto slide timer
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        function changeSlide(direction) {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        // Initialize slideshow
+        if (slides.length > 0) {
+            showSlide(currentSlide);
+            slideInterval = setInterval(nextSlide, 5000);
+            
+            // Pause on hover
+            const slideshow = document.querySelector('.slideshow');
+            if (slideshow) {
+                slideshow.addEventListener('mouseenter', () => clearInterval(slideInterval));
+                slideshow.addEventListener('mouseleave', () => {
+                    slideInterval = setInterval(nextSlide, 5000);
+                });
+            }
+        }
+
+        // Close mobile nav when clicking outside
+        document.addEventListener('click', (event) => {
+            const mobileNav = document.getElementById('mobileNav');
+            const hamburger = document.querySelector('.hamburger');
+            
+            if (!mobileNav || !hamburger) return;
+            
+            if (mobileNav.classList.contains('active') &&
+                !mobileNav.contains(event.target) &&
+                event.target !== hamburger &&
+                !hamburger.contains(event.target)) {
+                mobileNav.classList.remove('active');
+                mobileNav.setAttribute('aria-hidden', 'true');
+            }
+        });
+
+        // Responsive adjustments
+        function handleResize() {
+            const slideshow = document.querySelector('.slideshow');
+            if (!slideshow) return;
+            
+            const windowWidth = window.innerWidth;
+            slideshow.style.height = windowWidth <= 576 ? '60vh' : 
+                                    windowWidth <= 768 ? '70vh' : '80vh';
+        }
+
+        window.addEventListener('resize', handleResize);
+        handleResize();
+
+        // Product Detail Functionality
+        function showProductDetail(productId, title, image, description, availablePlaces, howToUse) {
+            // Set product details
+            document.getElementById('modalProductImage').src = image;
+            document.getElementById('modalProductTitle').textContent = title;
+            document.getElementById('modalProductDescription').textContent = description;
+            document.getElementById('modalAvailablePlaces').textContent = availablePlaces;
+            
+            // Set how to use based on product
+            const howToUseList = document.getElementById('modalHowToUse');
+            howToUseList.innerHTML = '';
+            
+            let uses = [];
+            switch(productId) {
+                case 'mighty-sardine':
+                    uses = [
+                        'Open the can and drain any excess liquid.',
+                        'Enjoy as a snack with bread or rice.',
+                        'Great for making sandwiches or salads.',
+                        'Perfect for lunch boxes.'
+                    ];
+                    break;
+                case 'royal-nest':
+                    uses = [
+                        'Shake well before consuming.',
+                        'Drink 1-2 times daily on an empty stomach.',
+                        'Mix with warm water or milk for better absorption.',
+                        'Ideal for health and beauty routines.'
+                    ];
+                    break;
+                case 'song-heng':
+                    uses = [
+                        'Use as a condiment with rice or noodles.',
+                        'Add to salads for extra flavor.',
+                        'Great for making stir-fry dishes.',
+                        'Perfect for those who enjoy spicy foods.'
+                    ];
+                    break;
+                case 'zale-cosmetics':
+                    uses = [
+                        'Apply a small amount to clean face.',
+                        'Gently massage in circular motions.',
+                        'Use morning and evening for best results.',
+                        'Apply after cleansing for maximum effectiveness.'
+                    ];
+                    break;
+                case 'zale-hair-oil':
+                    uses = [
+                        'Apply to clean, dry hair.',
+                        'Massage into scalp and hair ends.',
+                        'Leave on for 30 minutes before washing.',
+                        'Use 2-3 times a week for best results.'
+                    ];
+                    break;
+                case 'placenta-darin':
+                    uses = [
+                        'Apply a small amount to clean face.',
+                        'Gently pat and allow to absorb.',
+                        'Use morning and evening for best results.',
+                        'Combine with sunscreen for complete protection.'
+                    ];
+                    break;
+                case 'darin-goat-milk':
+                    uses = [
+                        'Apply to clean face and neck.',
+                        'Gently massage for 1-2 minutes.',
+                        'Rinse thoroughly with lukewarm water.',
+                        'Use daily for clean and refreshed skin.'
+                    ];
+                    break;
+                default:
+                    uses = ['Check product packaging for detailed usage instructions.'];
+            }
+            
+            uses.forEach(use => {
+                const li = document.createElement('li');
+                li.textContent = use;
+                howToUseList.appendChild(li);
+            });
+            
+            // Show modal
+            document.getElementById('productModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (event) => {
+            const modal = document.getElementById('productModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        window.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
