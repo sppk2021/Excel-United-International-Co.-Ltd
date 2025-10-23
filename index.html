@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Excel United International Co., Ltd.</title>
 
+    <!-- Favicon -->
+    <link rel="icon" href="https://uploads.onecompiler.io/43924vdyc/442298qsn/logo.png" type="image/png">
+
     <!-- External fonts & icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -784,6 +787,25 @@
             font-size: 1rem;
         }
 
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            font-size: 2rem;
+            color: #cc0000;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+            color: #ff6b6b;
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -1151,37 +1173,50 @@
     </section>
 
     <!-- Contact Us Section -->
-    <section id="contact" aria-labelledby="contact-heading">
-        <h2 id="contact-heading" class="section-title">Contact Us</h2>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>Get In Touch</h3>
-                <div class="contact-details">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                        <div>
-                            <h4>Our Location</h4>
-                            <p>Yan Naing Swe (2) Street, No. 48 Tharkayta Industrial Zone, Tharkayta Township, Yangon Region, Myanmar</p>
-                        </div>
+<section id="contact" aria-labelledby="contact-heading">
+    <h2 id="contact-heading" class="section-title">Contact Us</h2>
+    <div class="contact-container">
+        <div class="contact-info">
+            <h3>Get In Touch</h3>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                    <div>
+                        <h4>Our Location</h4>
+                        <p>Yan Naing Swe (2) Street, No. 48 Tharkayta Industrial Zone, Tharkayta Township, Yangon Region, Myanmar</p>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone" aria-hidden="true"></i>
-                        <div>
-                            <h4>Phone Number</h4>
-                            <p>+ (959) 951-751-759</p>
-                        </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone" aria-hidden="true"></i>
+                    <div>
+                        <h4>Phone Number</h4>
+                        <p>+ (959) 951-751-759</p>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope" aria-hidden="true"></i>
-                        <div>
-                            <h4>Email Address</h4>
-                            <p>info@euimm.com</p>
-                        </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                    <div>
+                        <h4>Email Address</h4>
+                        <p>info@euimm.com</p>
                     </div>
+                </div>
+                <!-- Social Media Icons -->
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/excelunitedinternational" target="_blank" class="social-icon" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/excelunitedinternational" target="_blank" class="social-icon" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/excelunitedinternational" target="_blank" class="social-icon" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Product Detail Modal -->
     <div class="modal" id="productModal">
@@ -1419,5 +1454,3 @@
     </script>
 </body>
 </html>
-
-
