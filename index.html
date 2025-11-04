@@ -239,13 +239,24 @@
         }
 
         /* Home Section */
-        .slideshow {
+        .slideshow-container {
             position: relative;
             width: 100%;
-            height: 80vh;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 80%; /* 5:4 Aspect Ratio (5/4 = 1.25, so 100/1.25 = 80%) */
             overflow: hidden;
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            background: #f0f0f0; /* Fallback for images */
+        }
+
+        .slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         .slide {
@@ -258,6 +269,7 @@
             transition: opacity 1.5s ease-in-out;
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
             display: flex;
             align-items: flex-end;
             padding: 0 5%;
@@ -877,9 +889,8 @@
                 padding: 60px 5% 30px;
             }
             
-            .slideshow {
-                height: 60vh;
-                border-radius: 15px;
+            .slideshow-container {
+                padding-bottom: 80%; /* 5:4 Aspect Ratio */
             }
             
             .slide-content {
@@ -1008,44 +1019,46 @@
     <!-- Home Section -->
     <section id="home" aria-labelledby="home-heading">
         <h2 id="home-heading" hidden>Home</h2>
-        <div class="slideshow" aria-roledescription="carousel">
-            <button class="slide-btn prev" onclick="changeSlide(-1)" aria-label="Previous slide">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="slide-btn next" onclick="changeSlide(1)" aria-label="Next slide">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-            <div class="slide active" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/1.jpg');">
-                <div class="slide-caption">
-                    <h3>MIGHTY Brand Sardine in Tomato Sauce</h3>
-                    <p>A bright red advertisement for MIGHTY Brand Sardines in Tomato Sauce emphasizing tasty, nutritious sardines in rich tomato sauce.</p>
+        <div class="slideshow-container" aria-roledescription="carousel">
+            <div class="slideshow">
+                <button class="slide-btn prev" onclick="changeSlide(-1)" aria-label="Previous slide">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slide-btn next" onclick="changeSlide(1)" aria-label="Next slide">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="slide active" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/1.jpg');">
+                    <div class="slide-caption">
+                        <h3>MIGHTY Brand Sardine in Tomato Sauce</h3>
+                        <p>A bright red advertisement for MIGHTY Brand Sardines in Tomato Sauce emphasizing tasty, nutritious sardines in rich tomato sauce.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/3.jpg');">
-                <div class="slide-caption">
-                    <h3>Royal Nest – 100% Natural Bird’s Nest</h3>
-                    <p>Premium Thai bird's nest drink made from 100% natural ingredients for health and beauty.</p>
+                <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/3.jpg');">
+                    <div class="slide-caption">
+                        <h3>Royal Nest – 100% Natural Bird’s Nest</h3>
+                        <p>Premium Thai bird's nest drink made from 100% natural ingredients for health and beauty.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/13.jpg');">
-                <div class="slide-caption">
-                    <h3>SONG HENG Sour Pickled Green Mustard</h3>
-                    <p>Authentic Thai-style sour pickled green mustard available in spicy and non-spicy varieties, imported and distributed by EUI</p>
+                <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/13.jpg');">
+                    <div class="slide-caption">
+                        <h3>SONG HENG Sour Pickled Green Mustard</h3>
+                        <p>Authentic Thai-style sour pickled green mustard available in spicy and non-spicy varieties, imported and distributed by EUI</p>
+                    </div>
                 </div>
-            </div>
-            <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/5.jpg');">
-                <div class="slide-caption">
-                    <h3>Zale Cosmetics – Whitening & Sun Block</h3>
-                    <p>Whitening and sunblock cream for smooth, bright, and protected skin.</p>
+                <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/5.jpg');">
+                    <div class="slide-caption">
+                        <h3>Zale Cosmetics – Whitening & Sun Block</h3>
+                        <p>Whitening and sunblock cream for smooth, bright, and protected skin.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/7.jpg');">
-                <div class="slide-caption">
-                    <h3>ZALE Coconut Hair Oil</h3>
-                    <p>Natural coconut hair oil that nourishes and strengthens hair, keeping it soft and smooth</p>
+                <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/7.jpg');">
+                    <div class="slide-caption">
+                        <h3>ZALE Coconut Hair Oil</h3>
+                        <p>Natural coconut hair oil that nourishes and strengthens hair, keeping it soft and smooth</p>
+                    </div>
                 </div>
+                <!-- Removed Placenta Dr. Darin slide -->
             </div>
-            <!-- Removed Placenta Dr. Darin slide -->
         </div>
     </section>
 
@@ -1060,7 +1073,7 @@
                     <p>A bright red advertisement for MIGHTY Brand Sardines in Tomato Sauce emphasizing tasty, nutritious sardines in rich tomato sauce.</p>
                 </div>
             </div>
-            <div class="product-card" onclick="showProductDetail('royal-nest', 'Royal Nest – 100% Natural Bird’s Nest', 'https://uploads.onecompiler.io/43924vdyc/442fmmhju/3.jpg', 'Premium Thai bird\'s nest drink made from 100% natural ingredients for health and beauty.', 'Available in 250ml bottles. Perfect for health drinks.', '250ml bottles')">
+            <div class="product-card" onclick="showProductDetail('royal-nest', 'Royal Nest – 100% Natural Bird’s Nest', 'https://uploads.onecompiler.io/43924vdyc/442fmmhju/3.jpg', 'Premium Thai bird\\'s nest drink made from 100% natural ingredients for health and beauty.', 'Available in 250ml bottles. Perfect for health drinks.', '250ml bottles')">
                 <img src="https://uploads.onecompiler.io/43924vdyc/442fmmhju/3.jpg" alt="Royal Nest" class="product-img">
                 <div class="product-info">
                     <h3>Royal Nest – 100% Natural Bird’s Nest</h3>
@@ -1295,10 +1308,10 @@
             slideInterval = setInterval(nextSlide, 5000);
             
             // Pause on hover
-            const slideshow = document.querySelector('.slideshow');
-            if (slideshow) {
-                slideshow.addEventListener('mouseenter', () => clearInterval(slideInterval));
-                slideshow.addEventListener('mouseleave', () => {
+            const slideshowContainer = document.querySelector('.slideshow-container');
+            if (slideshowContainer) {
+                slideshowContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
+                slideshowContainer.addEventListener('mouseleave', () => {
                     slideInterval = setInterval(nextSlide, 5000);
                 });
             }
@@ -1322,12 +1335,12 @@
 
         // Responsive adjustments
         function handleResize() {
-            const slideshow = document.querySelector('.slideshow');
-            if (!slideshow) return;
+            const slideshowContainer = document.querySelector('.slideshow-container');
+            if (!slideshowContainer) return;
             
             const windowWidth = window.innerWidth;
-            slideshow.style.height = windowWidth <= 576 ? '60vh' : 
-                                    windowWidth <= 768 ? '70vh' : '80vh';
+            // Maintain 5:4 aspect ratio (80% height)
+            slideshowContainer.style.paddingBottom = '80%';
         }
 
         window.addEventListener('resize', handleResize);
