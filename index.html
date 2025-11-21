@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <style>
         /* Base styles */
         * {
@@ -53,7 +56,7 @@
         .logo-image {
             height: 50px;
             cursor: pointer;
-            border-radius: 50%;
+            border-radius: 15px; /* Changed from 50% to 15px for rounded-square */
             transition: transform 0.3s ease;
         }
 
@@ -151,7 +154,7 @@
 
         .logo-image-mobile {
             height: 40px;
-            border-radius: 50%;
+            border-radius: 15px; /* Changed from 50% to 15px for rounded-square */
         }
 
         .close-btn {
@@ -245,8 +248,7 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding-bottom: 80%;
-            overflow: hidden;
+            padding-bottom: 100%; /* Changed from 80% to 100% for a 1:1 (square) aspect ratio */
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             background: #f0f0f0;
@@ -258,6 +260,8 @@
             left: 0;
             width: 100%;
             height: 100%;
+            overflow: hidden; /* ADDED: to keep the slides themselves contained */
+            border-radius: 20px; /* Added for rounded squared design */
         }
 
         .slide {
@@ -346,11 +350,11 @@
         }
 
         .prev {
-            left: 20px;
+            left: -35px; /* Adjusted to move it outside the container */
         }
 
         .next {
-            right: 20px;
+            right: -35px; /* Adjusted to move it outside the container */
         }
 
         /* Slide caption styles */
@@ -748,6 +752,17 @@
             text-align: center;
         }
 
+        /* New style for the "Connect With Us" heading inside contact-info */
+        .contact-info .social-heading {
+            color: #333;
+            margin-top: 30px; /* Space from contact details */
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
         .contact-item {
             display: flex;
             align-items: flex-start;
@@ -780,17 +795,13 @@
         }
 
         /* Social Icons */
-        .social-icons-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
         .social-icons {
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-top: 0;
+            margin-top: 20px; /* Added margin to separate from contact details */
+            position: relative;
+            z-index: 2;
         }
 
         .social-icon {
@@ -799,7 +810,7 @@
             justify-content: center;
             width: 50px;
             height: 50px;
-            border-radius: 50%;
+            border-radius: 15px; /* Changed from 50% to 15px for rounded-square */
             background: #f8f9fa;
             color: #cc0000;
             transition: all 0.3s ease;
@@ -848,7 +859,7 @@
             
             .about-text,
             .about-image,
-            .contact-info {
+            .contact-info { /* Removed social-icons-container */
                 width: 100%;
                 min-width: unset;
             }
@@ -888,6 +899,14 @@
             .slide-content p {
                 font-size: 1rem;
             }
+
+            /* Responsive adjustments for buttons */
+            .prev {
+                left: 10px; /* Keep them slightly inside on smaller screens */
+            }
+            .next {
+                right: 10px; /* Keep them slightly inside on smaller screens */
+            }
         }
 
         @media (max-width: 576px) {
@@ -901,7 +920,7 @@
             }
             
             .slideshow-container {
-                padding-bottom: 80%;
+                padding-bottom: 100%; /* Changed from 80% to 100% for a 1:1 (square) aspect ratio */
             }
             
             .slide-content {
@@ -917,15 +936,15 @@
                 font-size: 0.9rem;
             }
             
-            .products-grid,
+            .products-grid,\
             .services-grid {
                 grid-template-columns: 1fr;
                 gap: 25px;
             }
             
-            .product-card,
-            .service-card,
-            .contact-info {
+            .product-card,\
+            .service-card,\
+            .contact-info { /* Removed social-icons-container */
                 padding: 30px 20px;
             }
             
@@ -938,7 +957,7 @@
                 margin-bottom: 20px;
             }
             
-            .about-content,
+            .about-content,\
             .contact-container {
                 gap: 30px;
             }
@@ -976,6 +995,19 @@
             
             .product-detail-title {
                 font-size: 1.5rem;
+            }
+
+            /* Responsive adjustments for buttons */
+            .prev {
+                left: 5px;
+            }
+            .next {
+                right: 5px;
+            }
+            .slide-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
             }
         }
 
@@ -1031,13 +1063,14 @@
     <section id="home" aria-labelledby="home-heading">
         <h2 id="home-heading" hidden>Home</h2>
         <div class="slideshow-container" aria-roledescription="carousel">
+            <!-- Moved buttons here -->
+            <button class="slide-btn prev" onclick="changeSlide(-1)" aria-label="Previous slide">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slide-btn next" onclick="changeSlide(1)" aria-label="Next slide">
+                <i class="fas fa-chevron-right"></i>
+            </button>
             <div class="slideshow">
-                <button class="slide-btn prev" onclick="changeSlide(-1)" aria-label="Previous slide">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="slide-btn next" onclick="changeSlide(1)" aria-label="Next slide">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
                 <div class="slide active" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/1.jpg');">
                     <div class="slide-caption">
                         <h3>MIGHTY Brand Sardine in Tomato Sauce</h3>
@@ -1054,6 +1087,13 @@
                     <div class="slide-caption">
                         <h3>SONG HENG Sour Pickled Green Mustard</h3>
                         <p>Authentic Thai-style sour pickled green mustard available in spicy and non-spicy varieties, imported and distributed by EUI</p>
+                    </div>
+                </div>
+                <!-- New slide for Stick Biscuit -->
+                <div class="slide" style="background-image: url('https://via.placeholder.com/300x220?text=Stick+Biscuit');">
+                    <div class="slide-caption">
+                        <h3>stick Biscuit – Lotus Thailand</h3>
+                        <p>Crispy & Light Texture – Delightfully crunchy stick biscuits that are easy to snack on anytime.</p>
                     </div>
                 </div>
                 <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/5.jpg');">
@@ -1080,25 +1120,6 @@
                         <p>Facial cleanser made with goat milk extract that deeply cleanses, moisturizes, and refreshes the skin.</p>
                     </div>
                 </div>
-                <!-- Added new product slides -->
-                <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/9.jpg');">
-                    <div class="slide-caption">
-                        <h3>Thai Basil Seasoning</h3>
-                        <p>Authentic Thai basil seasoning for perfect flavor in stir-fry dishes.</p>
-                    </div>
-                </div>
-                <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/17.jpg');">
-                    <div class="slide-caption">
-                        <h3>Coconut Water</h3>
-                        <p>Natural coconut water for refreshing hydration and electrolyte balance.</p>
-                    </div>
-                </div>
-                <div class="slide" style="background-image: url('https://uploads.onecompiler.io/43924vdyc/442fmmhju/19.jpg');">
-                    <div class="slide-caption">
-                        <h3>Green Tea Extract</h3>
-                        <p>Pure green tea extract for health benefits and natural antioxidants.</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1107,49 +1128,56 @@
     <section id="products" aria-labelledby="products-heading">
         <h2 id="products-heading" class="section-title">Our Products</h2>
         <div class="products-grid">
-            <div class="product-card" onclick="showProductDetail('mighty-sardine', 'MIGHTY Brand Sardine in Tomato Sauce', 'https://uploads.onecompiler.io/43924vdyc/442fmmhju/1.jpg', 'A bright red advertisement for MIGHTY Brand Sardines in Tomato Sauce emphasizing tasty, nutritious sardines in rich tomato sauce.', 'Available in 120g cans. Perfect for meals and snacks.', '120g cans')">
+            <div class="product-card" onclick="showProductDetail('mighty-sardine', 'MIGHTY Brand Sardine in Tomato Sauce', 'https://uploads.onecompiler.io/43924vdyc/442fmmhju/1.jpg', 'A bright red advertisement for MIGHTY Brand Sardines in Tomato Sauce emphasizing tasty, nutritious sardines in rich tomato sauce.', 'Available in 120g cans. Perfect for meals and snacks.')">
                 <img src="https://uploads.onecompiler.io/43924vdyc/442fmmhju/1.jpg" alt="Mighty Sardine" class="product-img">
                 <div class="product-info">
                     <h3>MIGHTY Brand Sardine in Tomato Sauce</h3>
                     <p>A bright red advertisement for MIGHTY Brand Sardines in Tomato Sauce emphasizing tasty, nutritious sardines in rich tomato sauce.</p>
                 </div>
             </div>
-            <div class="product-card" onclick="showProductDetail('royal-nest', 'Royal Nest – 100% Natural Bird’s Nest', 'https://uploads.onecompiler.io/43924vdyc/442fmmhju/3.jpg', 'Premium Thai bird\\\\'s nest drink made from 100% natural ingredients for health and beauty.', 'Available in 250ml bottles. Perfect for health drinks.', '250ml bottles')">
+            <div class="product-card" onclick="showProductDetail('royal-nest', 'Royal Nest – 100% Natural Bird\'s Nest', 'https://uploads.onecompiler.io/43924vdyc/442fmmhju/3.jpg', 'Premium Thai bird\'s nest drink made from 100% natural ingredients for health and beauty.', 'Available in 250ml bottles. Perfect for health drinks.')">
                 <img src="https://uploads.onecompiler.io/43924vdyc/442fmmhju/3.jpg" alt="Royal Nest" class="product-img">
                 <div class="product-info">
                     <h3>Royal Nest – 100% Natural Bird’s Nest</h3>
                     <p>Premium Thai bird's nest drink made from 100% natural ingredients for health and beauty.</p>
                 </div>
             </div>
-            <div class="product-card" onclick="showProductDetail('song-heng', 'SONG HENG Sour Pickled Green Mustard', 'https://uploads.onecompiler.io/43924vdyc/442fmmhju/13.jpg', 'Authentic Thai-style sour pickled green mustard available in spicy and non-spicy varieties.', 'Available in 250g jars. Great for seasoning.', '250g jars')">
+            <div class="product-card" onclick="showProductDetail('song-heng', 'SONG HENG Sour Pickled Green Mustard', 'https://uploads.onecompiler.io/43924vdyc/442fmmhju/13.jpg', 'Authentic Thai-style sour pickled green mustard available in spicy and non-spicy varieties.', 'Available in 250g jars. Great for seasoning.')">
                 <img src="https://uploads.onecompiler.io/43924vdyc/442fmmhju/13.jpg" alt="Song Heng Pickles" class="product-img">
                 <div class="product-info">
                     <h3>SONG HENG Sour Pickled Green Mustard</h3>
                     <p>Authentic Thai-style sour pickled green mustard available in spicy and non-spicy varieties.</p>
                 </div>
             </div>
-            <div class="product-card" onclick="showProductDetail('zale-cosmetics', 'Zale Cosmetics – Whitening & Sun Block', 'https://uploads.onecompiler.io/43924vdyc/442fmmhju/5.jpg', 'Whitening and sunblock cream for smooth, bright, and protected skin.', 'Available in 50g tubes. Perfect for daily skincare.', '50g tubes')">
+            <div class="product-card" onclick="showProductDetail('stick-biscuit', 'stick Biscuit – Lotus Thailand', 'https://via.placeholder.com/300x220?text=Stick+Biscuit', 'Crispy & Light Texture – Delightfully crunchy stick biscuits that are easy to snack on anytime. Authentic Thai Flavor – Made in Thailand with quality ingredients for a tasty and unique snack experience. Perfect for All Ages – A fun snack that kids and adults love, ideal for school, office, or travel. Convenient & Portable – Comes in handy packaging, making it easy to carry and enjoy on the go. Great for Sharing – Perfect for parties, picnics, or enjoying with friends and family.', 'Available in major supermarkets and convenience stores across Myanmar.')">
+                <img src="https://via.placeholder.com/300x220?text=Stick+Biscuit" alt="Lotus Thailand Stick Biscuit" class="product-img">
+                <div class="product-info">
+                    <h3>stick Biscuit – Lotus Thailand</h3>
+                    <p>Crispy & Light Texture – Delightfully crunchy stick biscuits that are easy to snack on anytime.</p>
+                </div>
+            </div>
+            <div class="product-card" onclick="showProductDetail('zale-cosmetics', 'Zale Cosmetics – Whitening & Sun Block', 'https://uploads.onecompiler.io/43924vdyc/442fmmhju/5.jpg', 'Whitening and sunblock cream for smooth, bright, and protected skin.', 'Available in 50g tubes. Perfect for daily skincare.')">
                 <img src="https://uploads.onecompiler.io/43924vdyc/442fmmhju/5.jpg" alt="Zale Cosmetics" class="product-img">
                 <div class="product-info">
                     <h3>Zale Cosmetics – Whitening & Sun Block</h3>
                     <p>Whitening and sunblock cream for smooth, bright, and protected skin.</p>
                 </div>
             </div>
-            <div class="product-card" onclick="showProductDetail('zale-hair-oil', 'ZALE Coconut Hair Oil', 'https://uploads.onecompiler.io/43924vdyc/442fmmhju/7.jpg', 'Natural coconut hair oil that nourishes and strengthens hair, keeping it soft and smooth.', 'Available in 100ml bottles. Ideal for hair care.', '100ml bottles')">
+            <div class="product-card" onclick="showProductDetail('zale-hair-oil', 'ZALE Coconut Hair Oil', 'https://uploads.onecompiler.io/43924vdyc/442fmmhju/7.jpg', 'Natural coconut hair oil that nourishes and strengthens hair, keeping it soft and smooth.', 'Available in 100ml bottles. Ideal for hair care.')">
                 <img src="https://uploads.onecompiler.io/43924vdyc/442fmmhju/7.jpg" alt="ZALE Coconut Hair Oil" class="product-img">
                 <div class="product-info">
                     <h3>ZALE Coconut Hair Oil</h3>
                     <p>Natural coconut hair oil that nourishes and strengthens hair, keeping it soft and smooth.</p>
                 </div>
             </div>
-            <div class="product-card" onclick="showProductDetail('placenta-darin', 'Placenta Dr. Darin – Whitening & Anti-Aging Cream', 'https://uploads.onecompiler.io/43924vdyc/442fmmhju/9.jpg', 'Placenta-based cream that reduces dark spots and wrinkles while keeping skin hydrated.', 'Available in 50g tubes. Perfect for anti-aging.', '50g tubes')">
+            <div class="product-card" onclick="showProductDetail('placenta-darin', 'Placenta Dr. Darin – Whitening & Anti-Aging Cream', 'https://uploads.onecompiler.io/43924vdyc/442fmmhju/9.jpg', 'Placenta-based cream that reduces dark spots and wrinkles while keeping skin hydrated.', 'Available in 50g tubes. Perfect for anti-aging.')">
                 <img src="https://uploads.onecompiler.io/43924vdyc/442fmmhju/9.jpg" alt="Placenta Dr. Darin" class="product-img">
                 <div class="product-info">
                     <h3>Placenta Dr. Darin – Whitening & Anti-Aging Cream</h3>
                     <p>Placenta-based cream that reduces dark spots and wrinkles while keeping skin hydrated.</p>
                 </div>
             </div>
-            <div class="product-card" onclick="showProductDetail('darin-goat-milk', 'DARIN Goat Milk Facial Cleansing Foam', 'https://uploads.onecompiler.io/43924vdyc/442fmmhju/11.JPG', 'Facial cleanser made with goat milk extract that deeply cleanses, moisturizes, and refreshes the skin.', 'Available in 150ml bottles. Great for facial care.', '150ml bottles')">
+            <div class="product-card" onclick="showProductDetail('darin-goat-milk', 'DARIN Goat Milk Facial Cleansing Foam', 'https://uploads.onecompiler.io/43924vdyc/442fmmhju/11.JPG', 'Facial cleanser made with goat milk extract that deeply cleanses, moisturizes, and refreshes the skin.', 'Available in 150ml bottles. Great for facial care.')">
                 <img src="https://uploads.onecompiler.io/43924vdyc/442fmmhju/11.JPG" alt="DARIN Goat Milk Facial Cleansing Foam" class="product-img">
                 <div class="product-info">
                     <h3>DARIN Goat Milk Facial Cleansing Foam</h3>
@@ -1240,20 +1268,18 @@
                             <p>admin@euimm.com</p>
                         </div>
                     </div>
-                    <!-- Social Media Icons -->
-                    <div class="social-icons-container">
-                        <div class="social-icons">
-                            <a href="https://www.facebook.com/excelunitedinternational" target="_blank" class="social-icon" aria-label="Facebook">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="https://www.instagram.com/excelunitedinternational" target="_blank" class="social-icon" aria-label="Instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/company/excelunitedinternational" target="_blank" class="social-icon" aria-label="LinkedIn">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        </div>
-                    </div>
+                </div>
+                <!-- Social Media Icons moved here, inside contact-info -->
+                                <div class="social-icons">
+                    <a href="https://www.facebook.com/excelunitedinternational" target="_blank" class="social-icon" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/excelunitedinternational" target="_blank" class="social-icon" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/excelunitedinternational" target="_blank" class="social-icon" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -1274,17 +1300,22 @@
                 <p id="modalAvailablePlaces"></p>
             </div>
             
-            <div class="product-detail-section">
-                <h3>How to Use or Eat</h3>
-                <ul id="modalHowToUse"></ul>
+            <div class="product-detail-section" id="usageInstructionsSection">
+                <h3>Usage Instructions</h3>
+                <ul id="modalUsageInstructions"></ul>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Excel United International Co., Ltd. All rights reserved. | Designed with <i class="fas fa-heart" aria-hidden="true"></i> CNMax Digital </p>
+        <p>&copy; 2025 Excel United International Co., Ltd. All rights reserved. | Designed with CNMax Digital </p>
+        <div id="currentTime" style="font-size: 0.8rem; margin-top: 10px; color: #777;"></div>
     </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 
     <script>
         // Navigation scroll functionality
@@ -1381,24 +1412,25 @@
             if (!slideshowContainer) return;
             
             const windowWidth = window.innerWidth;
-            // Maintain 5:4 aspect ratio (80% height)
-            slideshowContainer.style.paddingBottom = '80%';
+            // Maintain 1:1 aspect ratio (100% height)
+            slideshowContainer.style.paddingBottom = '100%';
         }
 
         window.addEventListener('resize', handleResize);
         handleResize();
 
         // Product Detail Functionality
-        function showProductDetail(productId, title, image, description, availablePlaces, howToUse) {
+        function showProductDetail(productId, title, image, description, availablePlaces) {
             // Set product details
             document.getElementById('modalProductImage').src = image;
             document.getElementById('modalProductTitle').textContent = title;
             document.getElementById('modalProductDescription').textContent = description;
             document.getElementById('modalAvailablePlaces').textContent = availablePlaces;
             
-            // Set how to use based on product
-            const howToUseList = document.getElementById('modalHowToUse');
-            howToUseList.innerHTML = '';
+            // Set usage instructions based on product
+            const usageInstructionsList = document.getElementById('modalUsageInstructions');
+            const usageInstructionsSection = document.getElementById('usageInstructionsSection'); // Get the section div
+            usageInstructionsList.innerHTML = ''; // Clear previous instructions
             
             let uses = [];
             switch(productId) {
@@ -1414,59 +1446,73 @@
                     uses = [
                         'Shake well before consuming.',
                         'Drink 1-2 times daily on an empty stomach.',
-                        'Mix with warm water or milk for better absorption.',
+                        'Can be served chilled or at room temperature.',
                         'Ideal for health and beauty routines.'
                     ];
                     break;
                 case 'song-heng':
                     uses = [
                         'Use as a condiment with rice or noodles.',
-                        'Add to salads for extra flavor.',
-                        'Great for making stir-fry dishes.',
-                        'Perfect for those who enjoy spicy foods.'
+                        'Add to stir-fry dishes for a tangy flavor.',
+                        'Serve alongside grilled meats or fish.',
+                        'Can be eaten directly from the jar.'
+                    ];
+                    break;
+                case 'stick-biscuit':
+                    uses = [
+                        'Enjoy directly from the pack as a delightful snack.',
+                        'Pair with your favorite hot or cold beverage.',
+                        'Ideal for school lunches, office breaks, or travel.',
+                        'Share with friends and family at gatherings.'
                     ];
                     break;
                 case 'zale-cosmetics':
                     uses = [
-                        'Apply a small amount to clean face.',
-                        'Gently massage in circular motions.',
-                        'Use morning and evening for best results.',
-                        'Apply after cleansing for maximum effectiveness.'
+                        'Cleanse face thoroughly before application.',
+                        'Apply a small amount evenly to face and neck.',
+                        'Gently massage until fully absorbed.',
+                        'Use daily in the morning for sun protection and whitening benefits.'
                     ];
                     break;
                 case 'zale-hair-oil':
                     uses = [
-                        'Apply to clean, dry hair.',
-                        'Massage into scalp and hair ends.',
-                        'Leave on for 30 minutes before washing.',
-                        'Use 2-3 times a week for best results.'
+                        'Apply a generous amount to scalp and hair.',
+                        'Gently massage for 5-10 minutes to stimulate circulation.',
+                        'Leave on for at least 30 minutes, or overnight for deep conditioning.',
+                        'Wash off with a mild shampoo. Use 2-3 times a week for best results.'
                     ];
                     break;
                 case 'placenta-darin':
                     uses = [
-                        'Apply a small amount to clean face.',
-                        'Gently pat and allow to absorb.',
+                        'Apply a small amount to clean face and neck.',
+                        'Gently pat and allow to absorb, focusing on areas with wrinkles or dark spots.',
                         'Use morning and evening for best results.',
-                        'Combine with sunscreen for complete protection.'
+                        'For enhanced anti-aging effects, use consistently.'
                     ];
                     break;
                 case 'darin-goat-milk':
                     uses = [
-                        'Apply to clean face and neck.',
-                        'Gently massage for 1-2 minutes.',
-                        'Rinse thoroughly with lukewarm water.',
-                        'Use daily for clean and refreshed skin.'
+                        'Wet face with lukewarm water.',
+                        'Dispense a small amount of foam into your palm and lather.',
+                        'Gently massage onto face and neck in circular motions.',
+                        'Rinse thoroughly with lukewarm water and pat dry. Use daily for clean and refreshed skin.'
                     ];
                     break;
                 default:
-                    uses = ['Check product packaging for detailed usage instructions.'];
+                    uses = ['Refer to product packaging for detailed usage instructions.'];
             }
             
-            uses.forEach(use => {
-                const li = document.createElement('li');
-                li.textContent = use;
-                howToUseList.appendChild(li);
-            });
+            // Conditionally display the "Usage Instructions" section
+            if (uses.length > 0 && uses[0] !== 'Refer to product packaging for detailed usage instructions.') {
+                usageInstructionsSection.style.display = 'block'; // Show the section
+                uses.forEach(use => {
+                    const li = document.createElement('li');
+                    li.textContent = use;
+                    usageInstructionsList.appendChild(li);
+                });
+            } else {
+                usageInstructionsSection.style.display = 'none'; // Hide the section
+            }
             
             // Show modal
             document.getElementById('productModal').style.display = 'flex';
@@ -1492,6 +1538,19 @@
                 closeModal();
             }
         });
+
+        // Additional JS for current time
+        function showTime() {
+            const currentTimeElement = document.getElementById('currentTime');
+            if (currentTimeElement) {
+                currentTimeElement.innerHTML = new Date().toUTCString();
+            }
+        }
+        // Call showTime once immediately and then set interval
+        showTime();
+        setInterval(function () {
+            showTime();
+        }, 1000);
     </script>
 </body>
 </html>
